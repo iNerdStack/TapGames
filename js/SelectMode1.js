@@ -28,7 +28,8 @@ class SelectMode1 extends Phaser.Scene {
         this.sm1background =  this.add.image(240,320, "sm1background");
         this.sm1background.scaleY = 1.3;
         this.selectmodemenu =  this.add.image(240,320, "selectmodemenu");
-
+        this.selectmodemenu.scaleX = 0.61;
+        this.selectmodemenu.scaleY = 0.61;
         //Audio
         this.click = this.sound.add('click');
         

@@ -139,7 +139,7 @@ class GameOver extends Phaser.Scene {
         this.accuracyText = this.add.text(100,320, 'Accuracy: ' + accuracy + '% ( ' + accuratetaps + ' of ' + initialNumberOfTrials + ' )', { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
         this.accuracyText.setStroke('#3a230a',3);
 
-        this.highestComboText = this.add.text(100,358, 'Highest  Combo: ' + highestCombo + 'x', { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
+        this.highestComboText = this.add.text(100,358, 'Longest  Combo: ' + highestCombo + 'x', { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
         this.highestComboText.setStroke('#3a230a',3);
 
         

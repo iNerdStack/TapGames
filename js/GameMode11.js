@@ -15,11 +15,37 @@ class GameMode11 extends Phaser.Scene {
         this.load.image("gemhud","assets/images/menu/gemhud.png");
         this.load.image("corona","assets/images/corona.png");
         this.load.image('coronagreen','assets/images/coronagreen.png');
-        this.load.image("good","assets/images/good.png");
-        this.load.image("sharp","assets/images/sharp.png");
-        this.load.image("wrong","assets/images/wrong-move.png");
+        this.load.image('coronared','assets/images/coronared.png');
+        this.load.image('stop','assets/images/stop.png');
+        
+        //hype 
+        this.load.image("good","assets/images/hype/good.png");
+        this.load.image("great","assets/images/hype/great.png");
+        this.load.image("nice","assets/images/hype/nice.png");
+        this.load.image("sharp","assets/images/hype/sharp.png");
+        this.load.image("smooth","assets/images/hype/smooth.png");
+        this.load.image("genius","assets/images/hype/genius.png");
+        this.load.image("awesome","assets/images/hype/awesome.png");
+        this.load.image("guru","assets/images/hype/guru.png");
+        this.load.image("superhuman","assets/images/hype/superhuman.png");
+        this.load.image("perfect","assets/images/hype/perfect.png");
+        this.load.image("magician","assets/images/hype/magician.png");
+        this.load.image("impressive","assets/images/hype/impressive.png");
+        this.load.image("breathtaking","assets/images/hype/breathtaking.png");
+        this.load.image("godmode","assets/images/hype/godmode.png");
+        this.load.image("unbelievable","assets/images/hype/unbelievable.png");
+        this.load.image("inhuman","assets/images/hype/inhuman.png");
+        this.load.image("outofthisworld","assets/images/hype/outofthisworld.png");
+        this.load.image("badass","assets/images/hype/badass.png");
+        this.load.image("extraordinary","assets/images/hype/extraordinary.png");
+        
 
-
+        //miss
+        this.load.image("wrongmove","assets/images/hype/wrongmove.png");
+        this.load.image("tryagain","assets/images/hype/tryagain.png");
+        this.load.image("focus","assets/images/hype/focus.png");
+        this.load.image("wrong","assets/images/hype/wrong.png");
+        this.load.image("youmissed","assets/images/hype/youmissed.png");
 
         //audio
         this.load.audio('error', ['assets/sounds/error.mp3'])
@@ -30,6 +56,7 @@ class GameMode11 extends Phaser.Scene {
     create() {
       
         //Variables
+        this.isClicked;
         this.highestCombo = 0;
         this.accuratetaps = 0;
         this.initialNumberOfTrials = 20;
@@ -51,13 +78,12 @@ class GameMode11 extends Phaser.Scene {
         
        //Load Huds
 
-        this.scorehud =  this.add.image(100,35, "scorehud");
-        this.scorehud.scaleX = 0.7
-        this.scorehud.scaleY = 0.7
-        this.scorehud =  this.add.image(385,35, "gemhud");
-        this.scorehud.scaleX = 0.7
-        this.scorehud.scaleY = 0.7
-
+        this.scorehud =  this.add.image(120,35, "scorehud");
+        this.scorehud.scaleX = 0.55
+        this.scorehud.scaleY = 0.55
+        this.scorehud =  this.add.image(365,35, "gemhud");
+        this.scorehud.scaleX = 0.55
+        this.scorehud.scaleY = 0.55
 
 
         //Load Text
@@ -65,9 +91,9 @@ class GameMode11 extends Phaser.Scene {
        
 
         
-        this.scoreText = this.add.text(75, 24, '0', { fontSize: '17px', fill: '#fff',fontFamily: 'GameFont' });
+        this.scoreText = this.add.text(98, 26, '0', { fontSize: '15px', fill: '#fff',fontFamily: 'GameFont' });
         this.scoreText.setStroke('#3a230a',3);  
-        this.TrialText = this.add.text(385, 23, this.initialNumberOfTrials, { fontSize: '17px', fill: '#fff',fontFamily: 'GameFont' });
+        this.TrialText = this.add.text(345, 24, this.initialNumberOfTrials, { fontSize: '15px', fill: '#fff',fontFamily: 'GameFont' });
         this.TrialText.setStroke('#3a230a',3); 
         game.input.mouse.capture = true;
       
@@ -78,38 +104,24 @@ class GameMode11 extends Phaser.Scene {
     update() {
       
         
-        //Check Difficulty
-        if(SceneModeInfo == "Easy1"){
         
-          
-            this.moveVirus(this.corona,11,1);
-
-
-        }
-
-        else if(SceneModeInfo == "Hard1")
-        {
-
-            this.moveVirus(this.corona,21,1);
-        
-        }
-    
-
-    
+      this.checkMovement()
     
         
       if (game.input.activePointer.isDown)
     {
         if(this.time.now > this.timeDelay)
         {
-          
+          this.isClicked = true;
           this.NumberOfTrials -= 1;
           this.TrialText.setText(this.NumberOfTrials)
 
+          console.log(this.corona.x)
+
           this.scoreSystem(this.score)
         
-          this.timeDelay = this.time.now + 1000
-
+          this.timeDelay = this.time.now + 1500
+        
 
         }
 
@@ -159,7 +171,7 @@ class GameMode11 extends Phaser.Scene {
         
         
         
-
+  this.isClicked = false;
   this.scene.transition({
             target: 'GameOver',
             duration: 500,
@@ -177,26 +189,68 @@ class GameMode11 extends Phaser.Scene {
 
     }
 
-    gameOver()
+     checkMovement()
     {
 
 
-     
+     //Check Difficulty
+     if(SceneModeInfo == "Easy1"){
+        
+        if(!this.isClicked)
+        {
+         
+          this.moveVirus(this.corona,11,1);
+           
+        }
+          
+
+      }
+
+      else if(SceneModeInfo == "Hard1")
+      {
+          if(!this.isClicked)
+          {
+
+          this.moveVirus(this.corona,21,1);
+          }        
+      }
+  
 
 
     }
+
     scoreSystem(score)
     {
-       
 
-        if (this.between(this.corona.x, 231, 241)) {
+        if (this.between(this.corona.x, 231, 245)) {
+            this.corona.setTexture('coronagreen')  
+        }
+        else
+        {   
+            this.corona.setTexture('coronared')  
+        }
+          
+        
+        setTimeout(() => { 
+
+
+              this.corona.setTexture('corona')
+              this.isClicked = false;
+              this.checkMovement();
+
+         }, 1000);
+       
+        
+
+        if (this.between(this.corona.x, 231, 245)) {
            
+            //check wrong text function when changing this
+
             this.accuratetaps += 1;
             this.checkCombo += 1;
 
-          
-            
-
+             
+      
             
             if(this.checkCombo > this.highestCombo)
             {
@@ -209,18 +263,168 @@ class GameMode11 extends Phaser.Scene {
 
             if(this.checkCombo == 1)
             {
+   
+            this.randomtext = this.randomIntFromInterval(1,3)
+                 
+            if(this.randomtext == 1)
+            {
+
                 this.good =  this.add.image(234,150, "good");
                 this.them = this.good
 
             }
+            else if(this.randomtext == 2)
+            {
+
+                this.great =  this.add.image(234,150, "great");
+                this.them = this.great
+
+            }
+            else if(this.randomtext == 3)
+            {
+
+                this.nice =  this.add.image(234,150, "nice");
+                this.them = this.nice
+
+            }
+                
+            }
             else if(this.checkCombo == 2)
             {
-                this.sharp =  this.add.image(234,150, "sharp");
-                this.them = this.sharp
+               
+               
+                this.randomtext = this.randomIntFromInterval(1,2)
+                 
+                if(this.randomtext == 1)
+                {
+                    this.sharp =  this.add.image(234,150, "sharp");
+                    this.them = this.sharp
+                }
+                else if(this.randomtext == 2)
+                {
+    
+                    this.smooth =  this.add.image(234,150, "smooth");
+                    this.them = this.smooth
+    
+                }
+
+
+
+            
             }
             else if(this.checkCombo == 3)
             {
+                this.genius =  this.add.image(234,150, "genius");
+                this.them = this.genius
 
+            }
+            else if(this.checkCombo == 4)
+            {
+
+                this.awesome =  this.add.image(234,150, "awesome");
+                this.them = this.awesome
+
+            }
+            else if(this.checkCombo == 5)
+            {
+                
+                this.guru =  this.add.image(234,150, "guru");
+                this.them = this.guru
+
+            }
+            else if(this.checkCombo == 6)
+            {
+                
+                this.superhuman =  this.add.image(234,150, "superhuman");
+                this.them = this.superhuman
+
+            }
+            else if(this.checkCombo == 7)
+            {
+
+                this.randomtext = this.randomIntFromInterval(1,2)
+                 
+                if(this.randomtext == 1)
+                {
+                    this.perfect =  this.add.image(234,150, "perfect");
+                    this.them = this.perfect
+
+                }
+                else if(this.randomtext == 2)
+                {
+    
+                    this.magician =  this.add.image(234,150, "magician");
+                    this.them = this.magician
+    
+                }
+
+
+            }
+            else if(this.checkCombo == 8)
+            {
+                
+                this.impressive =  this.add.image(234,150, "impressive");
+                this.them = this.impressive
+
+            }
+            else if(this.checkCombo == 9)
+            {
+                
+                this.breathtaking =  this.add.image(234,150, "breathtaking");
+                this.them = this.breathtaking
+
+            }
+            else if(this.checkCombo == 10)
+            {
+                
+                this.godmode =  this.add.image(234,150, "godmode");
+                this.them = this.godmode
+
+            }
+            else if(this.checkCombo > 10)
+            {
+
+                this.randomtext = this.randomIntFromInterval(1,5)
+                 
+                if(this.randomtext == 1)
+                {
+                
+                this.unbelievable =  this.add.image(234,150, "unbelievable");
+                this.them = this.unbelievable
+
+                }
+                else if(this.randomtext == 2)
+                {
+    
+                    this.inhuman =  this.add.image(234,150, "inhuman");
+                    this.them = this.inhuman
+                          //out-of-this-world
+                }
+                else if(this.randomtext == 3)
+                {
+    
+                    this.outofthisworld =  this.add.image(234,150, "outofthisworld");
+                    this.them = this.outofthisworld
+                          
+                }
+                else if(this.randomtext == 4)
+                {
+    
+                    this.badass =  this.add.image(234,150, "badass");
+                    this.them = this.badass
+                          
+                }
+                else if(this.randomtext == 5)
+                {
+    
+                    this.extraordinary =  this.add.image(234,150, "extraordinary");
+                    this.them = this.extraordinary
+                          
+                }
+
+
+                
+                
 
             }
             
@@ -240,7 +444,10 @@ class GameMode11 extends Phaser.Scene {
       
           this.tweens.add({targets: this.them ,duration: 1000,y:100});
 
-            this.score += 10;
+           
+            this.score = this.score +  (100 * this.checkCombo);
+
+
             this.scoreText.setText(this.score)
             this.successsound.play()
          
@@ -251,8 +458,52 @@ class GameMode11 extends Phaser.Scene {
             //Failed Attempt!
 
             this.checkCombo = 0;
-            this.wrong =  this.add.image(234,150, "wrong");
-            this.them = this.wrong;
+
+
+            //random wrong 
+
+               this.randomtext = this.randomIntFromInterval(1,5)
+        
+    
+
+                if(this.randomtext == 1)
+                {
+
+                    this.wrong =  this.add.image(234,150, "wrong");
+                    this.them = this.wrong;
+                
+                }
+                else if(this.randomtext == 2)
+                {
+
+                    this.tryagain =  this.add.image(234,150, "tryagain");
+                    this.them = this.tryagain;
+                
+                }
+                else if(this.randomtext == 3)
+                {
+
+                    this.focus =  this.add.image(234,150, "focus");
+                    this.them = this.focus;
+                
+                }
+                else if(this.randomtext == 4)
+                {
+
+                    this.wrongmove =  this.add.image(234,150, "wrongmove");
+                    this.them = this.wrongmove;
+                
+                }
+                else if(this.randomtext == 5)
+                {
+
+                    this.youmissed =  this.add.image(234,150, "youmissed");
+                    this.them = this.youmissed;
+                
+                }
+
+
+            
 
             var tween = this.tweens.add({
                 targets: this.them,
@@ -275,11 +526,16 @@ class GameMode11 extends Phaser.Scene {
      
     }
 
+    //Other functions
     between(x, min, max) {
+       
         return x >= min && x <= max;
+     
+    }
+
+
+        randomIntFromInterval(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min);
       }
-
-   
-    
-
+  
 }
