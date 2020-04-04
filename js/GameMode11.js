@@ -17,6 +17,7 @@ class GameMode11 extends Phaser.Scene {
         this.load.image('coronagreen','assets/images/coronagreen.png');
         this.load.image('coronared','assets/images/coronared.png');
         this.load.image('stop','assets/images/stop.png');
+
         
         //hype 
         this.load.image("good","assets/images/hype/good.png");
@@ -56,7 +57,7 @@ class GameMode11 extends Phaser.Scene {
     create() {
       
         //Variables
-        this.isClicked;
+        this.isClicked = true;
         this.highestCombo = 0;
         this.accuratetaps = 0;
         this.initialNumberOfTrials = 20;
@@ -72,6 +73,7 @@ class GameMode11 extends Phaser.Scene {
         this.successsound = this.sound.add('success');
       
         //Load Images
+
         this.bgframe = this.add.sprite(234,310, "bgframe");
         this.corona = this.add.sprite(236,302, "corona");
         this.background =  this.add.image(240,320, "background");
@@ -91,50 +93,59 @@ class GameMode11 extends Phaser.Scene {
        
 
         
-        this.scoreText = this.add.text(98, 26, '0', { fontSize: '15px', fill: '#fff',fontFamily: 'GameFont' });
+        this.scoreText = this.add.text(98, 26, '0', { fontSize: '15px', fill: '#ffffff',fontFamily: 'GameFont' });
         this.scoreText.setStroke('#3a230a',3);  
-        this.TrialText = this.add.text(345, 24, this.initialNumberOfTrials, { fontSize: '15px', fill: '#fff',fontFamily: 'GameFont' });
+        this.TrialText = this.add.text(345, 24, this.initialNumberOfTrials, { fontSize: '15px', fill: '#ffffff',fontFamily: 'GameFont' });
         this.TrialText.setStroke('#3a230a',3); 
+        this.CountDownText = this.add.text(210,235, '3', { fontSize: '119px', fill: '#ffffff',fontFamily: 'GameFont' });
+        this.CountDownText.setStroke('#3a230a',3); 
+       
+        this.countDown = this.time.addEvent({ delay: 1000, callback: this.onCountDown, callbackScope: this, loop: true })
+        this.countdowntime = 3;
+        
+        
         game.input.mouse.capture = true;
-      
-
-    
+       
    
     }
+
     update() {
       
-        
-        
+
+      
       this.checkMovement()
     
         
       if (game.input.activePointer.isDown)
     {
-        if(this.time.now > this.timeDelay)
+
+        if(this.countdowntime == -1)
         {
-          this.isClicked = true;
-          this.NumberOfTrials -= 1;
-          this.TrialText.setText(this.NumberOfTrials)
-
-          console.log(this.corona.x)
-
-          this.scoreSystem(this.score)
-        
-          this.timeDelay = this.time.now + 1500
-        
-
+            if(this.time.now > this.timeDelay)
+            {
+              this.isClicked = true;
+              this.NumberOfTrials -= 1;
+              this.TrialText.setText(this.NumberOfTrials)
+    
+              this.scoreSystem(this.score)
+            
+              this.timeDelay = this.time.now + 1500
+            
+    
+            }
+    
+    
+            if(this.NumberOfTrials <  1)
+            {
+              
+    
+                this.moveVirus(this.corona,0,0);
+    
+    
+            }
+            
         }
-
-
-        if(this.NumberOfTrials <  1)
-        {
-          
-
-            this.moveVirus(this.corona,0,0);
-
-
-        }
-        
+      
     
 
     }
@@ -142,6 +153,47 @@ class GameMode11 extends Phaser.Scene {
     
     
     }
+
+    
+
+    onCountDown ()
+{
+
+    this.countdowntime -= 1; // One second
+   
+    if(this.countdowntime == 0)
+    {
+    
+    this.CountDownText.destroy() 
+    this.countDown.destroy()
+     this.isClicked = false;
+
+     this.countdowntime = -1;
+
+    }
+    else if(this.countdowntime > 0)
+    {
+      
+     
+        this.CountDownText.setText(this.countdowntime);
+      
+        this.isClicked = true;
+       
+        this.add.tween({
+
+          targets: this.CountDownText,
+          scaleX: { from: 0.7, to: 0.93 },
+          scaleY: { from: 0.7, to: 0.93 },
+          ease: 'Cubic',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+          duration: 800,
+          repeat: 0,            // -1: infinity
+          yoyo: false,
+      
+          });
+      
+    }
+
+}
 
     moveVirus(virus, speed, status)
     {
@@ -168,6 +220,7 @@ class GameMode11 extends Phaser.Scene {
         GameMode  = "GameMode11";
         
         accuracy = Math.floor((this.accuratetaps / this.initialNumberOfTrials) * 100)
+        
         
         
         
@@ -537,5 +590,17 @@ class GameMode11 extends Phaser.Scene {
         randomIntFromInterval(min, max) { // min and max included 
         return Math.floor(Math.random() * (max - min + 1) + min);
       }
+
+
+    formatTime(seconds){
+        // Minutes
+        var minutes = Math.floor(seconds/60);
+        // Seconds
+        var partInSeconds = seconds%60;
+        // Adds left zeros to seconds
+        partInSeconds = partInSeconds.toString().padStart(2,'0');
+        // Returns formated time
+        return `${minutes}:${partInSeconds}`;
+    }
   
 }

@@ -12,13 +12,14 @@ let GameMode;
 window.onload=function()
 {
 
+
     //On Page Load
     var config = {
         type: Phaser.AUTO,
         width: 480,
         height: 640,
         parent: 'LoadGame',
-        scene: [SelectGameScene,SelectMode1,GameMode11,GameOver],
+        scene: [BootScene,LoadingScreen,SelectGameScene,SelectMode1,GameMode11,GameOver],
 audio: {
         disableWebAudio: true
     }

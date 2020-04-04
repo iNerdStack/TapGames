@@ -54,7 +54,7 @@ class SelectGameScene extends Phaser.Scene {
 
                 this.scene.transition({
                     target: 'SelectMode1',
-                    duration: 50,
+                    duration: 500,
                     moveBelow: true,
                 });
 

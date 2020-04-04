@@ -143,7 +143,7 @@ class SelectMode1 extends Phaser.Scene {
 
         this.scene.transition({
             target: this.scenename,
-            duration: 500,
+            duration: 700,
             moveBelow: true,
         });
 
