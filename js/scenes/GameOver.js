@@ -6,7 +6,9 @@ class GameOver extends Phaser.Scene {
    
     preload()
     {
-        this.load.image("gobackground","assets/images/menu/back1.png");
+        
+
+        this.load.image("background2","assets/images/background2.png");
         this.load.image("gameovermenu","assets/images/menu/gameover.png");
         this.load.image("nostar-rating","assets/images/menu/nostar-rating.png");
         this.load.image("onestar-rating","assets/images/menu/onestar-rating.png");
@@ -14,11 +16,12 @@ class GameOver extends Phaser.Scene {
         this.load.image("threestar-rating","assets/images/menu/threestar-rating.png");
         this.load.image("easybtn","assets/images/menu/easy.png");
         this.load.image("hardbtn","assets/images/menu/hard.png");
+        this.load.image("classicmode","assets/images/menu/classicmode.png");
         this.load.image("menubtn","assets/images/menu/menubtn.png");
         this.load.image("reloadbtn","assets/images/menu/reloadbtn.png");
 
         //Load Audio
-        this.load.audio('click', ['assets/sounds/click.ogg'])
+        this.load.audio('click', ['assets/sounds/click.ogg']);
          
 
     }
@@ -29,7 +32,7 @@ class GameOver extends Phaser.Scene {
 
         this.click = this.sound.add('click');
 
-        this.gobackground =  this.add.image(240,320, "gobackground");
+        this.gobackground =  this.add.image(240,320, "background2");
         this.gameovermenu =  this.add.image(240,320, "gameovermenu");
         this.gameovermenu.scaleX = 0.85
         this.gameovermenu.scaleY=  0.85
@@ -98,6 +101,10 @@ class GameOver extends Phaser.Scene {
         }, this);
 
 
+        if(Number.isNaN(accuracy))
+        {
+            accuracy = 0;
+        }
 
         //Sort Rating
 
@@ -133,17 +140,28 @@ class GameOver extends Phaser.Scene {
 
        
 
-        this.scoreText = this.add.text(100,282, 'Score: ' + score, { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
+        this.scoreText = this.add.text(70,282, 'Score: ' + score, { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
         this.scoreText.setStroke('#3a230a',3);
 
-        this.accuracyText = this.add.text(100,320, 'Accuracy: ' + accuracy + '% ( ' + accuratetaps + ' of ' + initialNumberOfTrials + ' )', { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
+        this.accuracyText = this.add.text(70,320, 'Accuracy: ' + accuracy + '% ( ' + accuratetaps + ' of ' + NumberOfTrials + ' )', { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
         this.accuracyText.setStroke('#3a230a',3);
+       
+        if(GameMode == "GameMode11")
+        {
 
-        this.highestComboText = this.add.text(100,358, 'Longest  Combo: ' + highestCombo + 'x', { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
-        this.highestComboText.setStroke('#3a230a',3);
+            this.highestComboText = this.add.text(70,358, 'Longest  Combo: ' + highestCombo + 'x', { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
+            this.highestComboText.setStroke('#3a230a',3);
+    
+        }
+        else if(GameMode == "GameMode21")
+        {
 
+            this.LevelText = this.add.text(70,358, 'Level: ' + Level, { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
+            this.LevelText.setStroke('#3a230a',3);
+
+        }
         
-        this.modeText = this.add.text(100,400, 'Mode:', { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
+        this.modeText = this.add.text(70,400, 'Mode:', { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
         this.modeText.setStroke('#3a230a',3);
 
 
@@ -159,11 +177,17 @@ class GameOver extends Phaser.Scene {
           else if(SceneModeInfo == "Hard1")
           {
 
-
             this.hardbtn =  this.add.image(230,410, "hardbtn");
             this.hardbtn.scaleX = 0.65
             this.hardbtn.scaleY=  0.65
 
+
+          }
+          else if (SceneModeInfo == "Classic Mode")
+          {
+            this.classicmode =  this.add.image(250,410, "classicmode");
+            this.classicmode.scaleX = 0.65
+            this.classicmode.scaleY=  0.65
 
           }
 

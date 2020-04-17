@@ -1,18 +1,17 @@
 {
     "image": {
         "background": "assets/images/background1.png",
-        "selectmodemenu": "assets/images/menu/selectmode1.png",
-        "easy1": "assets/images/menu/easy.png",
-        "hard1": "assets/images/menu/hard.png",
-        "easy2": "assets/images/menu/easy.png",
-        "hard2": "assets/images/menu/hard.png",
-        "easy3": "assets/images/menu/easy.png",
-        "hard3": "assets/images/menu/hard.png",
-        "easy4": "assets/images/menu/easy.png",
-        "hard4": "assets/images/menu/hard.png",
-        "sm1background": "assets/images/menu/back1.png",
+        "background2": "assets/images/background2.png",
+        "background3": "assets/images/background3.png",
+        "background4": "assets/images/background4.png",
+        "selectmode1": "assets/images/menu/selectmode1.png",
+        "selectmode3": "assets/images/menu/selectmode3.png",
+        "easy": "assets/images/menu/easy.png",
+        "hard": "assets/images/menu/hard.png",
+        "classicmode": "assets/images/menu/classicmode.png",
         "gameone": "assets/images/menu/gameone.png",
-        "bgframe": "assets/images/bgframes1.png",
+        "gametwo": "assets/images/menu/gametwo.png",
+        "gamethree": "assets/images/menu/gamethree.png",
         "scorehud": "assets/images/menu/scorehud.png",
         "gemhud": "assets/images/menu/gemhud.png",
         "corona": "assets/images/corona.png",
@@ -49,11 +48,26 @@
         "twostar-rating": "assets/images/menu/twostar-rating.png",
         "threestar-rating": "assets/images/menu/threestar-rating.png",
         "menubtn": "assets/images/menu/menubtn.png",
-        "reloadbtn": "assets/images/menu/reloadbtn.png"
+        "reloadbtn": "assets/images/menu/reloadbtn.png",
+        "backbtn": "assets/images/menu/backbtn.png",
+        "infobtn": "assets/images/menu/infobtn.png",
+        "forwardbtn": "assets/images/menu/forwardbtn.png",
+        "selectmode": "assets/images/menu/selectmode.png",
+        "selectmodebtn": "assets/images/menu/selectmodebtn.png",
+        "backtiles3x3": "assets/images/3x3.png",
+        "backtiles4x4": "assets/images/4x4.png",
+        "backtiles5x5": "assets/images/5x5.png",
+        "dialog": "assets/images/menu/dialog.png",
+        "bgframe1": "assets/images/bgframes1.png",
+        "bgframe2": "assets/images/bgframes2.png",
+        "bgframe3": "assets/images/bgframes3.png"
+
+
     },
     "audio": {    
             "click" : "assets/sounds/click.ogg",
             "error" : "assets/sounds/error.mp3",
-            "success" : "assets/sounds/success.mp3"
+            "success" : "assets/sounds/success.mp3",
+            "touch" : "assets/sounds/touch.mp3"
     }
 }

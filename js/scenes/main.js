@@ -1,13 +1,18 @@
 var game;
-let score = 2000;
+let score = 0;
 let ScoreText;
-let difficulty;
+let difficulty = "0";
 let SceneModeInfo;
 let accuracy;
 let accuratetaps;
 let highestCombo;
-let initialNumberOfTrials;
+let NumberOfTrials;
 let GameMode;
+let ActivateSound = true;
+let countdowntime;
+let GameTime = "00:00";
+let Level =  0;
+let NumberOfTiles = 5;
 
 window.onload=function()
 {
@@ -19,14 +24,15 @@ window.onload=function()
         width: 480,
         height: 640,
         parent: 'LoadGame',
-        scene: [BootScene,LoadingScreen,SelectGameScene,SelectMode1,GameMode11,GameOver],
+        scene: [BootScene,LoadingScreen,SelectGameScene,SelectMode1,SelectMode3,
+               GameMode11,GameMode21,GameMode31,GameOver],
 audio: {
+
         disableWebAudio: true
-    }
+
+}
     
     }
- 
-
  
 game = new Phaser.Game(config);
 

@@ -10,13 +10,12 @@ class GameMode11 extends Phaser.Scene {
      
         // Load Images Or Assets Or Sounds Before UsE
         this.load.image("background","assets/images/background1.png");
-        this.load.image("bgframe","assets/images/bgframes1.png");
+        this.load.image("bgframe1","assets/images/bgframes1.png");
         this.load.image("scorehud","assets/images/menu/scorehud.png");
         this.load.image("gemhud","assets/images/menu/gemhud.png");
         this.load.image("corona","assets/images/corona.png");
         this.load.image('coronagreen','assets/images/coronagreen.png');
         this.load.image('coronared','assets/images/coronared.png');
-        this.load.image('stop','assets/images/stop.png');
 
         
         //hype 
@@ -74,7 +73,7 @@ class GameMode11 extends Phaser.Scene {
       
         //Load Images
 
-        this.bgframe = this.add.sprite(234,310, "bgframe");
+        this.bgframe = this.add.sprite(234,310, "bgframe1");
         this.corona = this.add.sprite(236,302, "corona");
         this.background =  this.add.image(240,320, "background");
         
@@ -101,7 +100,7 @@ class GameMode11 extends Phaser.Scene {
         this.CountDownText.setStroke('#3a230a',3); 
        
         this.countDown = this.time.addEvent({ delay: 1000, callback: this.onCountDown, callbackScope: this, loop: true })
-        this.countdowntime = 3;
+        countdowntime = 3;
         
         
         game.input.mouse.capture = true;
@@ -119,7 +118,7 @@ class GameMode11 extends Phaser.Scene {
       if (game.input.activePointer.isDown)
     {
 
-        if(this.countdowntime == -1)
+        if(countdowntime == -1)
         {
             if(this.time.now > this.timeDelay)
             {
@@ -159,23 +158,23 @@ class GameMode11 extends Phaser.Scene {
     onCountDown ()
 {
 
-    this.countdowntime -= 1; // One second
    
-    if(this.countdowntime == 0)
+    if(countdowntime <= 0)
     {
     
     this.CountDownText.destroy() 
     this.countDown.destroy()
      this.isClicked = false;
 
-     this.countdowntime = -1;
+     countdowntime = -1;
 
     }
-    else if(this.countdowntime > 0)
+    else if(countdowntime > 0)
     {
       
-     
-        this.CountDownText.setText(this.countdowntime);
+        countdowntime -= 1; 
+
+        this.CountDownText.setText(countdowntime);
       
         this.isClicked = true;
        
@@ -185,7 +184,7 @@ class GameMode11 extends Phaser.Scene {
           scaleX: { from: 0.7, to: 0.93 },
           scaleY: { from: 0.7, to: 0.93 },
           ease: 'Cubic',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
-          duration: 800,
+          duration: 500,
           repeat: 0,            // -1: infinity
           yoyo: false,
       
@@ -215,7 +214,7 @@ class GameMode11 extends Phaser.Scene {
 
         score = this.score;
         highestCombo = this.highestCombo
-        initialNumberOfTrials = this.initialNumberOfTrials;
+        NumberOfTrials = this.initialNumberOfTrials;
         accuratetaps = this.accuratetaps;
         GameMode  = "GameMode11";
         
@@ -265,6 +264,7 @@ class GameMode11 extends Phaser.Scene {
           {
 
           this.moveVirus(this.corona,21,1);
+          
           }        
       }
   

@@ -7,19 +7,19 @@
 
   
     <title>RONA GAMES</title>
-    <script src="js/phaser.min.js">  
-    </script>
-    <script src="js/alignGrid.js"></script>
-    <script src="js/align.js"></script>
-    <script src="js/UIBlock.js"></script>
+    <script src="js/phaser.min.js">  </script>
      <script src="js/phaser.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/GameMode11.js"></script>
-    <script src="js/SelectMode1.js"></script>
-    <script src="js/SelectGameScene.js"></script>
-    <script src="js/GameOver.js"></script>
-    <script src="js/LoadingScreen.js"></script>
-    <script src="js/BootScene.js"></script>
+    <script src="js/scenes/main.js"></script>
+    <script src="js/scenes/GameMode11.js"></script>
+    <script src="js/scenes/SelectMode1.js"></script>
+    <script src="js/scenes/SelectMode2.js"></script>
+    <script src="js/scenes/SelectMode3.js"></script>
+    <script src="js/scenes/SelectGameScene.js"></script>
+    <script src="js/scenes/GameOver.js"></script>
+    <script src="js/scenes/LoadingScreen.js"></script>
+    <script src="js/scenes/BootScene.js"></script>
+    <script src="js/scenes/GameMode21.js"></script>
+    <script src="js/scenes/GameMode31.js"></script>
 
     <style media='screen' type='text/css'>
         @font-face {
@@ -34,6 +34,22 @@
            visibility: hidden;
         }
       </style>
+
+
+<style media='screen' type='text/css'>
+  @font-face {
+     font-family: Franklin;
+     src: url('assets/fonts/Franklin.ttf') format("truetype");
+     font-weight: 400;
+     font-weight:normal;
+  }
+ .fontLoader {
+     position: absolute;
+     left: -1000px;
+     visibility: hidden;
+  }
+</style>
+
 
     <style>
 html,body {
@@ -66,6 +82,7 @@ html,body {
 
     <div id="LoadGame" class="red-square"></div>
     <span style="font-family:'GameFont'"></span>
+    <span style="font-family:'Franklin'"></span>
 
 </body>
 </html>
