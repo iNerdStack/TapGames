@@ -24,7 +24,7 @@ window.onload=function()
         width: 480,
         height: 640,
         parent: 'LoadGame',
-        scene: [SelectGameScene,BootScene,LoadingScreen,,SelectMode1,SelectMode3,
+        scene: [BootScene,SelectGameScene,LoadingScreen,,SelectMode1,SelectMode3,
                GameMode11,GameMode21,GameMode31,GameOver],
 audio: {
 
