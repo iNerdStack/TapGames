@@ -53,8 +53,8 @@ class SelectGameScene extends Phaser.Scene {
         this.infobtn.scaleY = 0.7;
         this.infobtn.setInteractive();
         this.infobtn.on('pointerdown', this.openExternalLink, this);
-        this.infoText = this.add.text(181, 535,"Info/Help Page",{fontSize: "17px", fill: "#000000",fontFamily: 'GameFont' });
-        this.infoText.setStroke("#ffffff",3);
+        this.infoText = this.add.text(181, 535,"Info/Help Page",{fontSize: "17px", fill: "#ffffff",fontFamily: 'GameFont' });
+        this.infoText.setStroke("#000000",3);
 
     }
     update()
