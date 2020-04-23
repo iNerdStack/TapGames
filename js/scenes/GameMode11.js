@@ -97,7 +97,7 @@ class GameMode11 extends Phaser.Scene {
         this.TrialText = this.add.text(345, 24, this.initialNumberOfTrials, { fontSize: '15px', fill: '#ffffff',fontFamily: 'GameFont' });
         this.TrialText.setStroke('#3a230a',3); 
     
-        this.CountDownText = this.add.text(210,235, '3', { fontSize: '119px', fill: '#ffffff',fontFamily: 'GameFont' });
+        this.CountDownText = this.add.text(210,247, '3', { fontSize: '100px', fill: '#ffffff',fontFamily: 'GameFont' });
         this.CountDownText.setStroke('#3a230a',3); 
        
         this.countDown = this.time.addEvent({ delay: 1000, callback: this.onCountDown, callbackScope: this, loop: true })
@@ -117,7 +117,7 @@ class GameMode11 extends Phaser.Scene {
             this.countdowntimer =  this.countdownvalue;
             this.countDowntimerEvent = this.time.addEvent({ delay: 1000, callback: this.onCountDownTimer, callbackScope: this, loop: true })
        
-            this.countdowntimerText = this.add.text(210, 24, this.countdowntimer+"s", { fontSize: '29px', fill: '#ffffff',fontFamily: 'GameFont' });
+            this.countdowntimerText = this.add.text(215, 24, this.countdowntimer+"s", { fontSize: '35px', fill: '#ffffff',fontFamily: 'GameFont' });
             this.countdowntimerText.setStroke('#3a230a',3); 
 
 
