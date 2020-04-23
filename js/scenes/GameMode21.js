@@ -20,7 +20,8 @@
      
      
    
-        this.load.audio('touch', ['assets/sounds/touch.mp3'])
+        
+        this.load.audio('levelup', ['assets/sounds/levelup.mp3'])
     
         for (var i = 0; i < this.numberOfVirus; i++) {
 
@@ -34,7 +35,7 @@
     create()
     {
 
-        this.touch = this.sound.add('touch');
+        this.levelupsound = this.sound.add('levelup');
         this.corona = [];
         this.background2  =  this.add.tileSprite (240,320, 480,640, "background2");
         this.background2.setInteractive();
@@ -128,7 +129,8 @@ if(this.countdowntime == -1)
       
       if(this.level < this.levelup)
       {
-
+        
+        this.levelupsound.play();
         this.level = this.levelup
         this.viruspeed += 0.125;
         this.LevelText.setText("Level: " + this.level)
@@ -219,7 +221,6 @@ if(this.countdowntime == -1)
 
         this.scoreText.setText(this.score)
      
-         
 
         var randomY = Phaser.Math.Between(-400, -30)
       

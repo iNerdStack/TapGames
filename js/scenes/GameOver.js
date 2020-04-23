@@ -16,6 +16,7 @@ class GameOver extends Phaser.Scene {
         this.load.image("threestar-rating","assets/images/menu/threestar-rating.png");
         this.load.image("easybtn","assets/images/menu/easy.png");
         this.load.image("hardbtn","assets/images/menu/hard.png");
+        this.load.image("countdownmode","assets/images/menu/countdownmode.png");
         this.load.image("classicmode","assets/images/menu/classicmode.png");
         this.load.image("menubtn","assets/images/menu/menubtn.png");
         this.load.image("reloadbtn","assets/images/menu/reloadbtn.png");
@@ -55,6 +56,7 @@ class GameOver extends Phaser.Scene {
             repeat: 0,            // -1: infinity
             yoyo: false,
             onComplete: function() {
+                
                 this.scene.transition({
                     target: 'SelectGameScene',
                     duration: 500,
@@ -77,7 +79,7 @@ class GameOver extends Phaser.Scene {
         this.reloadbtn.on('pointerdown', function()
         {
 
-            this.click.play()
+            this.click.play();
 
         var tween =  this.tweens.add({
             targets: this.reloadbtn,
@@ -148,9 +150,24 @@ class GameOver extends Phaser.Scene {
        
         if(GameMode == "GameMode11")
         {
+            
 
             this.highestComboText = this.add.text(70,358, 'Longest  Combo: ' + highestCombo + 'x', { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
             this.highestComboText.setStroke('#3a230a',3);
+
+            if(SceneModeInfo == "Easy4" | SceneModeInfo == "Hard4")
+            {
+
+            }
+
+            if (SceneModeInfo == "Easy4" | SceneModeInfo ==  "Hard4")
+            {
+
+              this.countdownmode =  this.add.image(330,410, "countdownmode");
+              this.countdownmode.scaleX = 0.45
+              this.countdownmode.scaleY=  0.45
+  
+            }
     
         }
         else if(GameMode == "GameMode21")
@@ -158,6 +175,11 @@ class GameOver extends Phaser.Scene {
 
             this.LevelText = this.add.text(70,358, 'Level: ' + Level, { fontSize: '21px', fill: '#fff',fontFamily: 'GameFont' });
             this.LevelText.setStroke('#3a230a',3);
+            
+            this.classicmode =  this.add.image(215,412, "classicmode");
+            this.classicmode.scaleX = 0.6
+            this.classicmode.scaleY=  0.6
+
 
         }
         
@@ -165,31 +187,25 @@ class GameOver extends Phaser.Scene {
         this.modeText.setStroke('#3a230a',3);
 
 
-          if(SceneModeInfo ==  "Easy1")
+          if(SceneModeInfo ==  "Easy1" | SceneModeInfo ==  "Easy2"| SceneModeInfo ==  "Easy3" | SceneModeInfo ==  "Easy4")
           {
 
-            this.easybtn =  this.add.image(230,410, "easybtn");
+            this.easybtn =  this.add.image(200,410, "easybtn");
             this.easybtn.scaleX = 0.65
             this.easybtn.scaleY=  0.65
 
           }
 
-          else if(SceneModeInfo == "Hard1")
+          else if(SceneModeInfo ==  "Hard1" | SceneModeInfo ==  "Hard2" | SceneModeInfo ==  "Hard3" | SceneModeInfo ==  "Hard4" )
           {
 
-            this.hardbtn =  this.add.image(230,410, "hardbtn");
+            this.hardbtn =  this.add.image(200,410, "hardbtn");
             this.hardbtn.scaleX = 0.65
             this.hardbtn.scaleY=  0.65
 
 
           }
-          else if (SceneModeInfo == "Classic Mode")
-          {
-            this.classicmode =  this.add.image(250,410, "classicmode");
-            this.classicmode.scaleX = 0.65
-            this.classicmode.scaleY=  0.65
-
-          }
+        
 
 
         

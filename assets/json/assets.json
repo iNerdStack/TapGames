@@ -1,5 +1,6 @@
 {
     "image": {
+        "bg": "assets/images/bg.png",
         "background": "assets/images/background1.png",
         "background2": "assets/images/background2.png",
         "background3": "assets/images/background3.png",
@@ -8,6 +9,7 @@
         "selectmode3": "assets/images/menu/selectmode3.png",
         "easy": "assets/images/menu/easy.png",
         "hard": "assets/images/menu/hard.png",
+        "countdownmode": "assets/images/menu/countdownmode.png",
         "classicmode": "assets/images/menu/classicmode.png",
         "gameone": "assets/images/menu/gameone.png",
         "gametwo": "assets/images/menu/gametwo.png",
@@ -17,7 +19,6 @@
         "corona": "assets/images/corona.png",
         "coronagreen": "assets/images/coronagreen.png",
         "coronared": "assets/images/coronared.png",
-        "stop": "assets/images/stop.png",
         "good": "assets/images/hype/good.png",
         "great": "assets/images/hype/great.png",
         "nice": "assets/images/hype/nice.png",
@@ -68,6 +69,7 @@
             "click" : "assets/sounds/click.ogg",
             "error" : "assets/sounds/error.mp3",
             "success" : "assets/sounds/success.mp3",
+            "levelup" : "assets/sounds/levelup.mp3",
             "touch" : "assets/sounds/touch.mp3"
     }
 }

@@ -3,7 +3,7 @@ class SelectGameScene extends Phaser.Scene {
         super('SelectGameScene');
     }
     
-   
+
     preload()
     {
         this.load.image("background2","assets/images/background2.png");
@@ -11,6 +11,7 @@ class SelectGameScene extends Phaser.Scene {
         this.load.image("gameone","assets/images/menu/gameone.png");
         this.load.image("gametwo","assets/images/menu/gametwo.png");
         this.load.image("gamethree","assets/images/menu/gamethree.png");
+        this.load.image("infobtn","assets/images/menu/infobtn.png");
         
         this.load.audio('click', ['assets/sounds/click.ogg'])
 
@@ -22,22 +23,22 @@ class SelectGameScene extends Phaser.Scene {
         this.backgrounds =  this.add.image(240,320, "background2");
         this.backgrounds.scaleY = 1.3;
         this.selectgame =  this.add.image(240,320, "selectgame");
-        this.selectgame.scaleY = 0.7;
         this.selectgame.scaleX = 0.7;
+        this.selectgame.scaleY = 0.7;
 
         this.gameone =  this.add.sprite(242,195, "gameone");
-        this.gameone.scaleY = 0.70;
         this.gameone.scaleX = 0.70;
+        this.gameone.scaleY = 0.70;
         this.gameone.setInteractive();
        
         this.gametwo = this.add.sprite(242,280, "gametwo");
-        this.gametwo.scaleY = 0.70;
         this.gametwo.scaleX = 0.70;
+        this.gametwo.scaleY = 0.70;
         this.gametwo.setInteractive();
 
         this.gamethree = this.add.sprite(242,365, "gamethree");
-        this.gamethree.scaleY = 0.70;
         this.gamethree.scaleX = 0.70;
+        this.gamethree.scaleY = 0.70;
         this.gamethree.setInteractive();
 
 
@@ -47,6 +48,11 @@ class SelectGameScene extends Phaser.Scene {
         this.gamethree.on('pointerdown', this.btnThreeTouch, this);
 
 
+        this.infobtn = this.add.sprite(250,575, "infobtn");
+        this.infobtn.scaleX = 0.85;
+        this.infobtn.scaleY = 0.85;
+        this.infobtn.setInteractive();
+        this.infobtn.on('pointerdown', this.openExternalLink, this);
          
 
     }
@@ -64,7 +70,7 @@ class SelectGameScene extends Phaser.Scene {
         this.click.play();
 
 
-        var tween =  this.tweens.add({
+     this.tweens.add({
             targets: this.gameone,
             scaleX: { from: 0.65, to: 0.7 },
             scaleY: { from: 0.65, to: 0.7 },
@@ -77,7 +83,8 @@ class SelectGameScene extends Phaser.Scene {
                 this.scene.transition({
                     target: 'SelectMode1',
                     duration: 500,
-                    moveBelow: true,
+                    moveAbove: true,
+                  
                 });
 
             }.bind(this)
@@ -85,6 +92,7 @@ class SelectGameScene extends Phaser.Scene {
       
     }
 
+    
     btnTwoTouch() {
         
 
@@ -139,4 +147,36 @@ class SelectGameScene extends Phaser.Scene {
         });      
       
     }
+
+    openExternalLink ()
+{
+    this.click.play();
+
+    this.tweens.add({
+           targets: this.infobtn,
+           scaleX: { from: 0.8, to: 0.9 },
+           scaleY: { from: 0.8, to: 0.9 },
+           ease: 'Bounce',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+           duration: 400,
+           repeat: 0,            // -1: infinity
+           yoyo: false,
+           onComplete: function(){
+
+            var url = "help.html";
+
+            var s = window.open(url, '_blank');
+        
+            if (s && s.focus)
+            {
+                s.focus();
+            }
+            else if (!s)
+            {
+                window.location.href = url;
+            }
+           }.bind(this)
+       });      
+  
+   
+}
 }

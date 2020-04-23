@@ -658,7 +658,19 @@ onNumberClick(getNumber, pointer, x, y, PropagationObj)
     {
 
     this.NoOfTaps += 1;
+    
     this.TapValueText.setText(this.PadWithZeroes(this.NoOfTaps,2));
+
+    this.tweens.add({
+        targets: this.TapValueText,
+        scaleX: { from: 1, to: 1.1 },
+        scaleY: { from: 1, to: 1.1 },
+        ease: 'Bounce',      // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        duration: 400,
+        repeat: 0,            // -1: infinity
+        yoyo: false,
+    });  
+
 
     this.updateText =  parseInt(getNumber._text) + 1;
     this.updateText = this.PadWithZeroes(this.updateText, 2)

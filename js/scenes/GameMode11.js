@@ -9,7 +9,6 @@ class GameMode11 extends Phaser.Scene {
     {
      
         // Load Images Or Assets Or Sounds Before UsE
-        this.load.image("background","assets/images/background1.png");
         this.load.image("bgframe1","assets/images/bgframes1.png");
         this.load.image("scorehud","assets/images/menu/scorehud.png");
         this.load.image("gemhud","assets/images/menu/gemhud.png");
@@ -59,23 +58,24 @@ class GameMode11 extends Phaser.Scene {
         this.isClicked = true;
         this.highestCombo = 0;
         this.accuratetaps = 0;
-        this.initialNumberOfTrials = 20;
+        this.initialNumberOfTrials = NumberOfTrials;
         this.NumberOfTrials = this.initialNumberOfTrials;
         this.checkWordAnimation = 0;
         this.checkCombo = 0;
         this.score = 0;
         this.timeDelay = 0;
+       
 
-      
+        
         //Sound
         this.errorsound = this.sound.add('error');
         this.successsound = this.sound.add('success');
       
         //Load Images
-
-        this.bgframe = this.add.sprite(234,310, "bgframe1");
-        this.corona = this.add.sprite(236,302, "corona");
-        this.background =  this.add.image(240,320, "background");
+        this.bgframe = this.add.sprite(240,320, "bgframe1");
+      //  this.bgframe = this.add.sprite(234,310, "bgframe1");
+        this.corona = this.add.sprite(238,310, "corona");
+      
         
        //Load Huds
 
@@ -96,15 +96,32 @@ class GameMode11 extends Phaser.Scene {
         this.scoreText.setStroke('#3a230a',3);  
         this.TrialText = this.add.text(345, 24, this.initialNumberOfTrials, { fontSize: '15px', fill: '#ffffff',fontFamily: 'GameFont' });
         this.TrialText.setStroke('#3a230a',3); 
+    
         this.CountDownText = this.add.text(210,235, '3', { fontSize: '119px', fill: '#ffffff',fontFamily: 'GameFont' });
         this.CountDownText.setStroke('#3a230a',3); 
        
         this.countDown = this.time.addEvent({ delay: 1000, callback: this.onCountDown, callbackScope: this, loop: true })
         countdowntime = 3;
-        
+
         
         game.input.mouse.capture = true;
        
+
+
+        //For Countdown Mode
+        if(SceneModeInfo == "Easy4" | SceneModeInfo == "Hard4")
+        {
+            this.NumberOfTrials = 0;
+            this.TrialText.setText("0");
+            this.countdownvalue = 15;
+            this.countdowntimer =  this.countdownvalue;
+            this.countDowntimerEvent = this.time.addEvent({ delay: 1000, callback: this.onCountDownTimer, callbackScope: this, loop: true })
+       
+            this.countdowntimerText = this.add.text(210, 24, this.countdowntimer+"s", { fontSize: '29px', fill: '#ffffff',fontFamily: 'GameFont' });
+            this.countdowntimerText.setStroke('#3a230a',3); 
+
+
+        }
    
     }
 
@@ -114,26 +131,41 @@ class GameMode11 extends Phaser.Scene {
       
       this.checkMovement()
     
-        
+      if(countdowntime == -1)
+      {
+         
+
       if (game.input.activePointer.isDown)
     {
 
-        if(countdowntime == -1)
-        {
+       
             if(this.time.now > this.timeDelay)
             {
-              this.isClicked = true;
-              this.NumberOfTrials -= 1;
-              this.TrialText.setText(this.NumberOfTrials)
-    
-              this.scoreSystem(this.score)
-            
-              this.timeDelay = this.time.now + 1500
-            
-    
-            }
-    
-    
+                if(SceneModeInfo == "Easy4" | SceneModeInfo == "Hard4")
+                {
+                    this.isClicked = true;
+                    this.NumberOfTrials += 1;
+                    this.TrialText.setText(this.NumberOfTrials)
+          
+                    this.scoreSystem(this.score)
+
+                   
+                    this.timeDelay = this.time.now + 1500
+                
+                   
+                }
+                else
+                {
+                    this.isClicked = true;
+                    this.NumberOfTrials -= 1;
+                    this.TrialText.setText(this.NumberOfTrials)
+          
+                    this.scoreSystem(this.score)
+                  
+                    this.timeDelay = this.time.now + 1500
+
+
+                    
             if(this.NumberOfTrials <  1)
             {
               
@@ -143,10 +175,26 @@ class GameMode11 extends Phaser.Scene {
     
             }
             
+                }
+        
+    
+            }
+    
+    
         }
       
+       //For Countdown Game Mode
+        if(SceneModeInfo == "Easy4" | SceneModeInfo == "Hard4")
+        {
+           if(this.countdowntimer <=  0)
+            {
+              
+              
+                this.moveVirus(this.corona,0,0);
     
-
+    
+            }
+        }
     }
    
     
@@ -154,7 +202,40 @@ class GameMode11 extends Phaser.Scene {
     }
 
     
+    onCountDownTimer()
+    {
+        if(countdowntime == -1)
+        {
 
+        this.countdowntimer -= 1;
+        this.countdowntimerText.setText(this.countdowntimer+ "s");
+        this.add.tween({
+
+            targets: this.countdowntimerText,
+            scaleX: { from: 0.8, to: 1 },
+            scaleY: { from: 0.8, to: 1 },
+            ease: 'Cubic',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
+            duration: 500,
+            repeat: 0,            // -1: infinity
+            yoyo: false,
+        
+            });
+
+        if(this.countdowntimer <= 5)
+        {
+
+           this.countdowntimerText.setFill("#cb051c") 
+           this.countdowntimerText.setStroke('#ffffff',3); 
+        }
+        else
+        {
+            this.countdowntimerText.setFill("#ffffff");
+            this.countdowntimerText.setStroke('#3a230a',3); 
+        
+            
+        }
+    }
+    }
     onCountDown ()
 {
 
@@ -212,14 +293,23 @@ class GameMode11 extends Phaser.Scene {
         
         //Send All Parameters To Game Over
 
+
         score = this.score;
         highestCombo = this.highestCombo
-        NumberOfTrials = this.initialNumberOfTrials;
         accuratetaps = this.accuratetaps;
         GameMode  = "GameMode11";
+        if(SceneModeInfo == "Easy4" | SceneModeInfo == "Hard4")
+        {
         
-        accuracy = Math.floor((this.accuratetaps / this.initialNumberOfTrials) * 100)
-        
+           NumberOfTrials = this.NumberOfTrials
+           accuracy = Math.floor((this.accuratetaps / NumberOfTrials) * 100)
+
+        } else
+        {
+            NumberOfTrials = this.initialNumberOfTrials;
+            accuracy = Math.floor((this.accuratetaps / this.initialNumberOfTrials) * 100)
+        }
+    
         
         
         
@@ -246,19 +336,19 @@ class GameMode11 extends Phaser.Scene {
 
 
      //Check Difficulty
-     if(SceneModeInfo == "Easy1"){
+     if(SceneModeInfo == "Easy1" | SceneModeInfo == "Easy2"| SceneModeInfo == "Easy3"| SceneModeInfo == "Easy4"){
         
         if(!this.isClicked)
         {
          
-          this.moveVirus(this.corona,11,1);
+           this.moveVirus(this.corona,11,1);
            
         }
           
 
       }
 
-      else if(SceneModeInfo == "Hard1")
+      else if(SceneModeInfo == "Hard1"| SceneModeInfo == "Hard2"| SceneModeInfo == "Hard3"| SceneModeInfo == "Hard4")
       {
           if(!this.isClicked)
           {
@@ -275,7 +365,7 @@ class GameMode11 extends Phaser.Scene {
     scoreSystem(score)
     {
 
-        if (this.between(this.corona.x, 231, 245)) {
+        if (this.between(this.corona.x, 233, 247)) {
             this.corona.setTexture('coronagreen')  
         }
         else
@@ -295,9 +385,16 @@ class GameMode11 extends Phaser.Scene {
        
         
 
-        if (this.between(this.corona.x, 231, 245)) {
+        if (this.between(this.corona.x, 233, 247)) {
            
             //check wrong text function when changing this
+
+            if(SceneModeInfo == "Easy4" | SceneModeInfo == "Hard4")
+            {
+
+              this.countdowntimer = this.countdownvalue + 1;
+
+            }
 
             this.accuratetaps += 1;
             this.checkCombo += 1;

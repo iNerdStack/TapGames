@@ -72,6 +72,7 @@ class SelectMode1 extends Phaser.Scene {
         {
             SceneModeInfo = "Easy1";
             difficulty = "0";
+            NumberOfTrials = 30;
             this.NextScene()
 
         }, this);
@@ -84,6 +85,7 @@ class SelectMode1 extends Phaser.Scene {
         {
             SceneModeInfo = "Hard1";
             difficulty = "1";
+            NumberOfTrials = 30;
             this.NextScene()
 
         }, this);
@@ -92,21 +94,87 @@ class SelectMode1 extends Phaser.Scene {
         this.easy2 = this.add.sprite(350,273, "easy");
         this.easy2.scaleY = 0.65;
         this.easy2.scaleX = 0.65;
+        this.easy2.setInteractive();
+        
+        this.easy2.on('pointerdown', function()
+        {
+            SceneModeInfo = "Easy2";
+            difficulty = "0";
+            NumberOfTrials = 50;
+            this.NextScene()
+
+        }, this);
+
+
         this.hard2 = this.add.sprite(350,310, "hard");
         this.hard2.scaleY = 0.65;
         this.hard2.scaleX = 0.65;
+        this.hard2.setInteractive();
+        this.hard2.on('pointerdown', function()
+        {
+            SceneModeInfo = "Hard2";
+            difficulty = "1";
+            NumberOfTrials = 50;
+            this.NextScene()
+
+        }, this);
+
         this.easy3 = this.add.sprite(350,371, "easy");
         this.easy3.scaleY = 0.65;
         this.easy3.scaleX = 0.65;
+        this.easy3.setInteractive();
+        
+        this.easy3.on('pointerdown', function()
+        {
+            SceneModeInfo = "Easy3";
+            difficulty = "0";
+            NumberOfTrials = 100;
+            this.NextScene()
+
+        }, this);
+
+
         this.hard3 = this.add.sprite(350,408, "hard");
         this.hard3.scaleY = 0.65;
         this.hard3.scaleX = 0.65;
+        this.hard3.setInteractive();
+        this.hard3.on('pointerdown', function()
+        {
+            SceneModeInfo = "Hard3";
+            difficulty = "1";
+            NumberOfTrials = 100;
+            this.NextScene()
+
+        }, this);
+
         this.easy4 = this.add.sprite(350,470, "easy");
         this.easy4.scaleY = 0.65;
         this.easy4.scaleX = 0.65;
+
+        this.easy4.setInteractive();
+        
+        this.easy4.on('pointerdown', function()
+        {
+            SceneModeInfo = "Easy4";
+            difficulty = "0";
+            NumberOfTrials = 100;
+            this.NextScene()
+
+        }, this);
+
+
         this.hard4 = this.add.sprite(350,507, "hard");
         this.hard4.scaleY = 0.65;
         this.hard4.scaleX = 0.65;
+        this.hard4.setInteractive();
+        this.hard4.on('pointerdown', function()
+        {
+            SceneModeInfo = "Hard4";
+            difficulty = "1";
+            NumberOfTrials = 100;
+            this.NextScene()
+
+        }, this);
  
 
        
@@ -140,6 +208,40 @@ class SelectMode1 extends Phaser.Scene {
             this.Mode = this.hard1;
 
         } 
+        else if(SceneModeInfo == "Easy2")
+        {
+           
+            this.Mode = this.easy2;
+
+        }  else if(SceneModeInfo == "Hard2")
+        {
+           
+            this.Mode = this.hard2;
+
+        }    else if(SceneModeInfo == "Easy3")
+        {
+           
+            this.Mode = this.easy3;
+
+        }  else if(SceneModeInfo == "Hard3")
+        {
+           
+            this.Mode = this.hard3;
+
+        }   
+        else if(SceneModeInfo == "Easy4")
+        {
+           
+            this.Mode = this.easy4;
+
+        }  else if(SceneModeInfo == "Hard4")
+        {
+           
+            this.Mode = this.hard4;
+
+        }   
+
+
 
 
         this.click.play()
@@ -161,17 +263,20 @@ class SelectMode1 extends Phaser.Scene {
     GameMode()
     {
 
-        this.scenename;
-
-     if(SceneModeInfo == "Easy1" | SceneModeInfo == "Hard1")
+     
+/*
+   this.scenename;
+     if(SceneModeInfo != "Hard41")
      {
 
         this.scenename = 'GameMode11'
 
      }
 
-        this.scene.transition({
-            target: this.scenename,
+     */
+
+     this.scene.transition({
+            target: "GameMode11",
             duration: 700,
             moveBelow: true,
         });
