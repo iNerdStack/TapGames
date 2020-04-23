@@ -48,12 +48,13 @@ class SelectGameScene extends Phaser.Scene {
         this.gamethree.on('pointerdown', this.btnThreeTouch, this);
 
 
-        this.infobtn = this.add.sprite(250,575, "infobtn");
-        this.infobtn.scaleX = 0.85;
-        this.infobtn.scaleY = 0.85;
+        this.infobtn = this.add.sprite(250,510, "infobtn");
+        this.infobtn.scaleX = 0.7;
+        this.infobtn.scaleY = 0.7;
         this.infobtn.setInteractive();
         this.infobtn.on('pointerdown', this.openExternalLink, this);
-         
+        this.infoText = this.add.text(181, 535,"Info/Help Page",{fontSize: "17px", fill: "#000000",fontFamily: 'GameFont' });
+        this.infoText.setStroke("#ffffff",3);
 
     }
     update()
@@ -154,8 +155,8 @@ class SelectGameScene extends Phaser.Scene {
 
     this.tweens.add({
            targets: this.infobtn,
-           scaleX: { from: 0.8, to: 0.9 },
-           scaleY: { from: 0.8, to: 0.9 },
+           scaleX: { from: 0.6, to: 0.7 },
+           scaleY: { from: 0.6, to: 0.7 },
            ease: 'Bounce',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
            duration: 400,
            repeat: 0,            // -1: infinity
@@ -174,7 +175,7 @@ class SelectGameScene extends Phaser.Scene {
             {
                 window.location.href = url;
             }
-            
+
            }.bind(this)
        });      
   
