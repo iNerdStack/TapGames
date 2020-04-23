@@ -14,6 +14,7 @@ let GameTime = "00:00";
 let Level =  0;
 let NumberOfTiles = 5;
 
+
 window.onload=function()
 {
 

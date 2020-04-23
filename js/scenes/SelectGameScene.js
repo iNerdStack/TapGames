@@ -148,7 +148,7 @@ class SelectGameScene extends Phaser.Scene {
       
     }
 
-    openExternalLink ()
+ openExternalLink ()
 {
     this.click.play();
 
@@ -174,6 +174,7 @@ class SelectGameScene extends Phaser.Scene {
             {
                 window.location.href = url;
             }
+            
            }.bind(this)
        });      
   

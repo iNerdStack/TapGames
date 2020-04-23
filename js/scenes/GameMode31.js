@@ -19,7 +19,7 @@ class GameMode31 extends Phaser.Scene {
         this.load.image("dialog","assets/images/menu/dialog.png");
         this.load.image("reloadbtn","assets/images/menu/reloadbtn.png");
         this.load.image("menubtn","assets/images/menu/menubtn.png");
-        this.load.image("forwardbtn","assets/images/menu/forwardbtn.png");
+        this.load.image("infobtn","assets/images/menu/infobtn.png");
         this.load.image("backbtn","assets/images/menu/backbtn.png");
        
        //Load Audio
@@ -386,20 +386,20 @@ class GameMode31 extends Phaser.Scene {
 
 
 
-        this.forwardbtn = this.add.image(290,320, "forwardbtn");
-        this.forwardbtn.scaleX = 0;
-        this.forwardbtn.scaleY = 0;
-        this.forwardbtn.setInteractive();
+        this.infobtn = this.add.image(280,320, "infobtn");
+        this.infobtn.scaleX = 0;
+        this.infobtn.scaleY = 0;
+        this.infobtn.setInteractive();
        
       
-        this.forwardbtn.on('pointerdown', function()
+        this.infobtn.on('pointerdown', function()
         {
 
 
          this.click.play()
 
         var tween =  this.tweens.add({
-            targets: this.forwardbtn,
+            targets: this.infobtn,
             scaleX: { from: 0.55, to: 0.7 },
             scaleY: { from: 0.55, to: 0.7 },
             ease: 'Bounce',       // 'Cubic', 'Elastic', 'Bounce', 'Back'
@@ -408,21 +408,28 @@ class GameMode31 extends Phaser.Scene {
             yoyo: false,
             onComplete: function() {
         
-                this.scene.transition({
-                    target: 'SelectMode3',
-                    duration: 500,
-                    moveBelow: true,
-                });
+                var url = "help.html";
+
+                var s = window.open(url, '_blank');
+            
+                if (s && s.focus)
+                {
+                    s.focus();
+                }
+                else if (!s)
+                {
+                    window.location.href = url;
+                }
 
             }.bind(this)
         });      
 
         }, this);
        
-        this.forwardText = this.add.text(263,345, "Mode",{fontSize: "20px", fill: this.CompletedFillColor,fontFamily: 'Franklin' });
-        this.forwardText.setStroke(this.CompletedFillStroke,5);
-        this.forwardText.scaleX = 0;
-        this.forwardText.scaleY = 0;
+        this.infoText = this.add.text(263,345, "Info",{fontSize: "20px", fill: this.CompletedFillColor,fontFamily: 'Franklin' });
+        this.infoText.setStroke(this.CompletedFillStroke,5);
+        this.infoText.scaleX = 0;
+        this.infoText.scaleY = 0;
 
 
 
@@ -496,6 +503,8 @@ this.tweens.add({
       yoyo: false,
       onComplete: function() {
 
+
+
         //Make all dialog objects visible
         this.backbtn.scaleX = 0.7;
         this.backbtn.scaleY = 0.7;
@@ -505,14 +514,15 @@ this.tweens.add({
         this.reloadbtn.scaleY = 0.7;
         this.reloadText.scaleX = 1
         this.reloadText.scaleY = 1;
-        this.forwardbtn.scaleX = 0.7;
-        this.forwardbtn.scaleY = 0.7;
-        this.forwardText.scaleX = 1
-        this.forwardText.scaleY = 1;
+        this.infobtn.scaleX = 0.7;
+        this.infobtn.scaleY = 0.7;
+        this.infoText.scaleX = 1
+        this.infoText.scaleY = 1;
         this.dialogmenubtn.scaleX = 0.7;
         this.dialogmenubtn.scaleY = 0.7;
         this.dialogmenuText.scaleX = 1
         this.dialogmenuText.scaleY = 1;
+
        
 
       }.bind(this)
@@ -548,10 +558,10 @@ closDialog()
      this.reloadbtn.scaleY = 0;
      this.reloadText.scaleX = 0;
      this.reloadText.scaleY = 0;
-     this.forwardbtn.scaleX = 0;
-     this.forwardbtn.scaleY = 0;
-     this.forwardText.scaleX = 0;
-     this.forwardText.scaleY = 0;
+     this.infobtn.scaleX = 0;
+     this.infobtn.scaleY = 0;
+     this.infoText.scaleX = 0;
+     this.infoText.scaleY = 0;
      this.dialogmenubtn.scaleX = 0;
      this.dialogmenubtn.scaleY = 0;
      this.dialogmenuText.scaleX = 0;
