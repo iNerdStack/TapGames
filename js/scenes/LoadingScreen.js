@@ -5,13 +5,18 @@ class LoadingScreen extends Phaser.Scene {
 
     preload ()
     {
+        
+        this.add.text(this.centerX() - 170, this.centerY() + 230, 'Hey we are setting things up for you in your browser.', { fontSize: '12px', fill: '#ffffff',fontFamily: 'GameFont' });
+        this.add.text(this.centerX() - 90, this.centerY() + 250, 'This delay will only occur once', { fontSize: '12px', fill: '#ffffff',fontFamily: 'GameFont' });
         this.loadAssets(this.cache.json.get('assets'));
         this.add.image(this.centerX(), this.centerY(), 'logo');
         this.createProgressbar(this.centerX(), this.centerY() + 200);
+       
     }
-
+ 
     createProgressbar (x, y)
     {
+        
         // size & position
         let width = 250;
         let height = 20;

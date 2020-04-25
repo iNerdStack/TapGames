@@ -21,6 +21,7 @@ class GameMode31 extends Phaser.Scene {
         this.load.image("menubtn","assets/images/menu/menubtn.png");
         this.load.image("infobtn","assets/images/menu/infobtn.png");
         this.load.image("backbtn","assets/images/menu/backbtn.png");
+        this.load.image("cancelbtn","assets/images/menu/cancelbtn.png");
        
        //Load Audio
        this.load.audio('click', ['assets/sounds/click.ogg']);
@@ -314,8 +315,36 @@ class GameMode31 extends Phaser.Scene {
         this.dialog = this.add.image(240,320, "dialog");
         this.dialog.alpha = 0; 
       
-        
+        this.cancelbtn = this.add.image(365,250, "cancelbtn");
+        this.cancelbtn.scaleX = 0;
+        this.cancelbtn.scaleY = 0;
+        this.cancelbtn.setInteractive();
+       
+      
+        this.cancelbtn.on('pointerdown', function()
+        {
 
+
+           this.click.play()
+
+    this.tweens.add({
+            targets: this.cancelbtn,
+            scaleX: { from: 0.55, to: 0.7 },
+            scaleY: { from: 0.55, to: 0.7 },
+            ease: 'Bounce',      // 'Cubic', 'Elastic', 'Bounce', 'Back'
+            duration: 400,
+            repeat: 0,            // -1: infinity
+            yoyo: false,
+            onComplete: function() {
+        
+                this.closDialog();
+
+            }.bind(this)
+        });      
+
+        }, this);
+
+        
         this.backbtn = this.add.image(122,320, "backbtn");
         this.backbtn.scaleX = 0;
         this.backbtn.scaleY = 0;
@@ -337,7 +366,11 @@ class GameMode31 extends Phaser.Scene {
             yoyo: false,
             onComplete: function() {
         
-                this.closDialog();
+                this.scene.transition({
+                    target: 'SelectMode3',
+                    duration: 500,
+                    moveBelow: true,
+                });
 
             }.bind(this)
         });      
@@ -453,9 +486,6 @@ class GameMode31 extends Phaser.Scene {
             repeat: 0,            // -1: infinity
             yoyo: false,
             onComplete: function() {
-        
-
-              
 
              this.scene.transition({
                 target: 'SelectGameScene',
@@ -508,6 +538,8 @@ this.tweens.add({
         //Make all dialog objects visible
         this.backbtn.scaleX = 0.7;
         this.backbtn.scaleY = 0.7;
+        this.cancelbtn.scaleX = 0.7;
+        this.cancelbtn.scaleY = 0.7;
         this.backText.scaleX = 1
         this.backText.scaleY = 1;
         this.reloadbtn.scaleX = 0.7;
@@ -552,6 +584,8 @@ closDialog()
      //Make all dialog objects visible
      this.backbtn.scaleX = 0;
      this.backbtn.scaleY = 0;
+     this.cancelbtn.scaleX = 0;
+     this.cancelbtn.scaleY = 0;
      this.backText.scaleX = 0;
      this.backText.scaleY = 0;
      this.reloadbtn.scaleX = 0;

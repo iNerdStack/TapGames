@@ -18,15 +18,15 @@ let NumberOfTiles = 5;
 window.onload=function()
 {
 
-
     //On Page Load
     var config = {
         type: Phaser.AUTO,
         width: 480,
         height: 640,
         parent: 'LoadGame',
-        scene: [BootScene,SelectGameScene,LoadingScreen,,SelectMode1,SelectMode3,
-               GameMode11,GameMode21,GameMode31,GameOver],
+        scene: [BootScene,SelectGameScene,LoadingScreen,
+                SelectMode1,SelectMode3,GameMode11,
+                GameMode21,GameMode31,GameOver],
 audio: {
 
         disableWebAudio: true

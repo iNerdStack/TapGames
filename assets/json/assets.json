@@ -53,6 +53,7 @@
         "backbtn": "assets/images/menu/backbtn.png",
         "infobtn": "assets/images/menu/infobtn.png",
         "forwardbtn": "assets/images/menu/forwardbtn.png",
+        "cancelbtn": "assets/images/menu/cancelbtn.png",
         "selectmode": "assets/images/menu/selectmode.png",
         "selectmodebtn": "assets/images/menu/selectmodebtn.png",
         "backtiles3x3": "assets/images/3x3.png",

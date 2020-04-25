@@ -13,6 +13,7 @@ class BootScene extends Phaser.Scene {
     }
     create()
     {
+       
         this.scene.start('LoadingScreen');
 
     }
