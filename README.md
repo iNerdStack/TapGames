@@ -4,9 +4,13 @@ A single page HTML 5 Games Project developed in **PhaserJS** for mobile devices 
 Its is an active project developed and updated during  the pandemic lockdown  with continuous  fixes  and development of more 2D games.
 
 **Stack:** HTML, CSS and SCSS, Javascript (ES 6)
-**Framework:** Photonstorm [Phaser3](https://github.com/photonstorm/phaser)(3.22.0)
-**Host:** Github Pages (Netherlands)
-**Website**: [https://tapgames.xyz](https://tapgames.xyz)  
+
+**Framework:** Photonstorm [Phaser3](https://github.com/photonstorm/phaser)(3.22.0).
+
+**Host:** Github Pages (Netherlands).
+
+**Website**: [https://tapgames.xyz](https://tapgames.xyz).
+
 **Release Date:**  27th April, 2020
 
 ## Requirements
@@ -32,17 +36,20 @@ Complete a set of tiles by tapping on the brown tiles to add number on the white
 All Game modes and how to play are explained in the documentation.
 
 **SCREENSHOTS:**
-|  ![Stop The Virus](https://tapgames.xyz/assets/images/help/stopthevirus.jpg)| ![enter image description here](https://tapgames.xyz/assets/images/help/fallingvirus.jpg) |
+|  ![Stop The Virus](https://tapgames.xyz/assets/images/help/stopthevirus.jpg) | ![Falling Virus](https://tapgames.xyz/assets/images/help/fallingvirus.jpg) |
 |--|--|
-| ![enter image description here](https://tapgames.xyz/assets/images/help/sumup1.jpg) 
+| ![Sum Up Puzzle](https://tapgames.xyz/assets/images/help/sumup1.jpg) |
 
 # Documentation
 The full documentation on how to play, game mode and score system for each game can be found [here](https://tapgames.xyz/help.html)
 
 # Credits
 All assets used for the development of the platform are free and open source.
-**Sound Files :** [https://zapslat.com](zapsplat.com)
+
+**Sound Files :** [https://zapslat.com](https://zapsplat.com)
+
 **Mobile Game GUI:** [Graphic Burger](https://graphicburger.com/mobile-game-gui/)
+
 **Vectors:** [Freepik](http://www.freepik.com)
 
 
