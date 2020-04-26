@@ -5,11 +5,11 @@ Its is an active project developed and updated during  the pandemic lockdown  wi
 
 **Stack:** HTML, CSS and SCSS, Javascript (ES 6)
 
-**Framework:** Photonstorm [Phaser3](https://github.com/photonstorm/phaser)(3.22.0).
+**Framework:** Photonstorm [Phaser3](https://github.com/photonstorm/phaser)(3.22.0)
 
-**Host:** Github Pages (Netherlands).
+**Host:** Github Pages (Netherlands)
 
-**Website**: [https://tapgames.xyz](https://tapgames.xyz).
+**Website**: [https://tapgames.xyz](https://tapgames.xyz)
 
 **Release Date:**  27th April, 2020
 
