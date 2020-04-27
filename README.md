@@ -43,6 +43,18 @@ All Game modes and how to play are explained in the documentation.
 # Documentation
 The full documentation on how to play, game mode and score system for each game can be found [here](https://tapgames.xyz/help.html)
 
+# Contributors
+
+![TheCreativeSav](https://yt3.ggpht.com/a/AATXAJxKaOqeMtIKTUH02PzabNCmJjzsiLREAyv74A=s100-c-k-c0xffffffff-no-rj-mo)
+
+**Creative Sav**
+
+Youtube: [youtube.com/c/creativesav](youtube.com/c/creativesav)
+
+LinkedIn: [linkedin.com/in/thecreativesav/](linkedin.com/in/thecreativesav/)
+
+
+
 # Credits
 All assets used for the development of the platform are free and open source.
 
