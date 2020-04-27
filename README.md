@@ -49,9 +49,9 @@ The full documentation on how to play, game mode and score system for each game 
 
 **Creative Sav**
 
-Youtube: [youtube.com/c/creativesav](youtube.com/c/creativesav)
+Youtube: [youtube.com/c/creativesav](https://youtube.com/c/creativesav)
 
-LinkedIn: [linkedin.com/in/thecreativesav/](linkedin.com/in/thecreativesav/)
+LinkedIn: [linkedin.com/in/thecreativesav/](https://linkedin.com/in/thecreativesav/)
 
 
 
