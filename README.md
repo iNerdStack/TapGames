@@ -29,11 +29,10 @@ There are three active games published:
 1. **STOP THE VIRUS:**
 Stop the moving virus in the white virus frame at the center of screen by touching any point on the screen .
 2.  **FALLING VIRUS**
-Stop all falling virus by tapping them and stopping them from going below the bottom screen.
+Stop all falling virus by tapping them and stopping them from going below the screen.
 3. **SUM UP PUZZLE**
-Complete a set of tiles by tapping on the brown tiles to add number on the white tiles to it row and column .
+Complete a set of tiles by tapping on the brown tiles to add numbers on the white tiles to its row and column.
 
-All Game modes and how to play are explained in the documentation.
 
 **SCREENSHOTS:**
 |  ![Stop The Virus](https://tapgames.xyz/assets/images/help/stopthevirus.jpg) | ![Falling Virus](https://tapgames.xyz/assets/images/help/fallingvirus.jpg) |
