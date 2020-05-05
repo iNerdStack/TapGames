@@ -20,7 +20,7 @@ window.onload=function()
 
     //On Page Load
     var config = {
-        type: Phaser.AUTO,
+        type: Phaser.CANVAS,
         width: 480,
         height: 640,
         parent: 'LoadGame',
