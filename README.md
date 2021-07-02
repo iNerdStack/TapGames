@@ -9,7 +9,7 @@ Its is an active project developed and updated during  the pandemic lockdown  wi
 
 **Host:** Github Pages (Netherlands)
 
-**Website**: [https://tapgames.xyz](https://tapgames.xyz)
+**Website**: [ https://inerdstack.github.io/TapGames/](https://inerdstack.github.io/TapGames/)
 
 **Release Date:**  27th April, 2020
 
@@ -35,9 +35,9 @@ Complete a set of tiles by tapping on the brown tiles to add numbers on the whit
 
 
 **SCREENSHOTS:**
-|  ![Stop The Virus](https://tapgames.xyz/assets/images/help/stopthevirus.jpg) | ![Falling Virus](https://tapgames.xyz/assets/images/help/fallingvirus.jpg) |
+|  ![Stop The Virus](https://inerdstack.github.io/TapGames//assets/images/help/stopthevirus.jpg) | ![Falling Virus](https://inerdstack.github.io/TapGames/assets/images/help/fallingvirus.jpg) |
 |--|--|
-| ![Sum Up Puzzle](https://tapgames.xyz/assets/images/help/sumup1.jpg) |
+| ![Sum Up Puzzle](https://inerdstack.github.io/TapGames//assets/images/help/sumup1.jpg) |
 
 # Documentation
 The full documentation on how to play, game mode and score system for each game can be found [here](https://tapgames.xyz/help.html)
@@ -66,5 +66,5 @@ All assets used for the development of the platform are free and open source.
 
 ## 📄 License
 
-TapGames is MIT licensed, as found in the [LICENSE](https://tapgames.xyz/LICENSE) file.
+TapGames is MIT licensed, as found in the [LICENSE](https://inerdstack.github.io/TapGames//LICENSE) file.
 
